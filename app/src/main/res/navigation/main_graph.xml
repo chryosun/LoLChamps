@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/mainActivity">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.lolchamps.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.lolchamps.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_menuCampeones"
+            app:destination="@id/menuCampeones" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrarse"
+        android:name="com.example.lolchamps.Registrarse"
+        android:label="fragment_registrarse"
+        tools:layout="@layout/fragment_registrarse" >
+        <action
+            android:id="@+id/action_registrarse_to_menuCampeones"
+            app:destination="@id/menuCampeones" />
+    </fragment>
+    <activity
+        android:id="@+id/menuCampeones"
+        android:name="com.example.lolchamps.MenuCampeones"
+        android:label="activity_menu_campeones"
+        tools:layout="@layout/activity_menu_campeones" />
+    <fragment
+        android:id="@+id/listaCampeones"
+        android:name="com.example.lolchamps.ListaCampeones"
+        android:label="fragment_lista_campeones"
+        tools:layout="@layout/fragment_lista_campeones" />
+</navigation>
