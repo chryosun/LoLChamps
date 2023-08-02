@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "442720543036",
+    "project_id": "lolchamps-92602",
+    "storage_bucket": "lolchamps-92602.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442720543036:android:d9aa45b6d8a985e10cbe39",
+        "android_client_info": {
+          "package_name": "com.example.lolchamps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442720543036-5a7876kgblfjpe1mtsk5nqelio70dpjh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQwWR4nXKQBY0YKcKNrV1JKFLerys0POc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442720543036-5a7876kgblfjpe1mtsk5nqelio70dpjh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
