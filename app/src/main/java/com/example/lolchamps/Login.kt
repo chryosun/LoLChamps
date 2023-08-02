@@ -1,59 +1,57 @@
 package com.example.lolchamps
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.FirebaseFirestore
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Login.newInstance] factory method to
- * create an instance of this fragment.
- */
-class Login : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class Login : Fragment(R.layout.fragment_login) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var btnLogueo : Button
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
-    }
+        val tBoxUser = view.findViewById<EditText>(R.id.tboxLogUsuario)
+        val tBoxContra = view.findViewById<EditText>(R.id.tboxLogContra)
+        val db = FirebaseFirestore.getInstance()
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Login.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Login().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        btnLogueo.setOnClickListener {
+
+            val user_catch = tBoxUser.text.toString().trim()
+            val contra_catch = tBoxContra.text.toString().trim()
+
+            db.collection("usuarios").document(tBoxUser.text.toString()).get()
+                .addOnSuccessListener { document ->
+                    document?.let {
+                        val usuario = document.toObject(Usuarios::class.java)
+                    }
+                        .addOnSuccessListener {
+                            Log.d("Ingreso de datos", "Se ingresaron los datos correctamente")
+                        }
+                        .addOnFailureListener { error ->
+                            Log.e("ErrorFirebase", "El error es ${error.toString()}")
+                        }
+
+                    if (tBoxUser.text.isEmpty() || tBoxContra.text.isEmpty()) {
+                        mostrar_snack_bar("No se han ingresado todos los datos")
+                    } else {
+                        //show_data(name_catch,apellido_catch,correo_catch)
+                    } 
                 }
-            }
+        }
+    }private fun mostrar_snack_bar(mensaje: String) {
+        Snackbar.make(btnLogueo, mensaje, Snackbar.LENGTH_SHORT).show()
     }
+
 }
+data class Usuarios(
+    val usuario: String = "",
+    val contra: String = ""
+)

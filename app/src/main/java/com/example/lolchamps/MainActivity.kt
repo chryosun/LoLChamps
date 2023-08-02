@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         val btnLog: Button = findViewById(R.id.btnLog)
         val btnReg: Button = findViewById(R.id.btnRegistrar)
 
+
+
         btnLog.setOnClickListener {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainerView, Login())
