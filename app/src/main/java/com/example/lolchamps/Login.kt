@@ -35,7 +35,7 @@ class Login : Fragment(R.layout.fragment_login) {
                 val contra_catch = tBoxContra.text.toString().trim()
 
 
-                db.collection("usuarios").document(tBoxUser.text.toString()).get().addOnSuccessListener { document ->
+                db.collection("usuarios").document(user_catch).get().addOnSuccessListener { document ->
                     document?.let {
                         val usuario = document.toObject(Usuario::class.java)
 
@@ -52,6 +52,7 @@ class Login : Fragment(R.layout.fragment_login) {
                     mostrar_snack_bar("Error! No existe el usuario ingresado...")
                 }
             }
+
         }
     }private fun mostrar_snack_bar(mensaje: String) {
         Snackbar.make(btnLogueo, mensaje, Snackbar.LENGTH_SHORT).show()

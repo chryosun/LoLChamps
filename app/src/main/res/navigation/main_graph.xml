@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_login_to_menuCampeones"
             app:destination="@id/menuCampeones" />
+        <action
+            android:id="@+id/action_login_to_registrarse"
+            app:destination="@id/registrarse" />
     </fragment>
     <fragment
         android:id="@+id/registrarse"
