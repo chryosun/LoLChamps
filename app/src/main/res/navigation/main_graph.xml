@@ -40,5 +40,14 @@
         android:id="@+id/listaCampeones"
         android:name="com.example.lolchamps.ListaCampeones"
         android:label="fragment_lista_campeones"
-        tools:layout="@layout/fragment_lista_campeones" />
+        tools:layout="@layout/fragment_lista_campeones" >
+        <action
+            android:id="@+id/action_listaCampeones_to_infoCampeon"
+            app:destination="@id/infoCampeon" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoCampeon"
+        android:name="com.example.lolchamps.InfoCampeon"
+        android:label="fragment_info_campeon"
+        tools:layout="@layout/fragment_info_campeon" />
 </navigation>

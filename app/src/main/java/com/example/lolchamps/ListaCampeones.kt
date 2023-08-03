@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 
 
 class ListaCampeones : Fragment(R.layout.fragment_lista_campeones) {
@@ -24,37 +26,24 @@ class ListaCampeones : Fragment(R.layout.fragment_lista_campeones) {
         }
 
         malzahar.setOnClickListener{
-            requireActivity().supportFragmentManager.commit {
-                replace(R.id.fragmentContainerView2, InfoCampeon.newInstance())}
+            findNavController().navigate(R.id.action_listaCampeones_to_infoCampeon)
         }
 
         sion.setOnClickListener{
-            requireActivity().supportFragmentManager.commit {
-                replace(R.id.fragmentContainerView2, InfoCampeon.newInstance())}
+            findNavController().navigate(R.id.action_listaCampeones_to_infoCampeon)
         }
 
         akali.setOnClickListener{
-            requireActivity().supportFragmentManager.commit {
-                replace(R.id.fragmentContainerView2, InfoCampeon.newInstance())}
+            findNavController().navigate(R.id.action_listaCampeones_to_infoCampeon)
         }
 
         zed.setOnClickListener{
-            requireActivity().supportFragmentManager.commit {
-                replace(R.id.fragmentContainerView2, InfoCampeon.newInstance())}
+            findNavController().navigate(R.id.action_listaCampeones_to_infoCampeon)
         }
 
 
     }
-        companion object {
 
-
-            fun newInstance() =
-                ListaCampeones().apply {
-                    arguments = Bundle().apply {
-
-                    }
-                }
-        }
 
 }
 
