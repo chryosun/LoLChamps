@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.TextUtils.replace
 import android.view.View
 import android.widget.ImageButton
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.navigation.Navigation.findNavController
@@ -21,24 +22,23 @@ class ListaCampeones : Fragment(R.layout.fragment_lista_campeones) {
         val zed = view.findViewById<ImageButton>(R.id.btnZed)
 
         ornn.setOnClickListener{
-        requireActivity().supportFragmentManager.commit {
-            replace(R.id.fragmentContainerView2, InfoCampeon.newInstance())}
+            findNavController().navigate(R.id.action_listaCampeones_to_infoCampeon,bundleOf("campeon" to "ornn"))
         }
 
         malzahar.setOnClickListener{
-            findNavController().navigate(R.id.action_listaCampeones_to_infoCampeon)
+            findNavController().navigate(R.id.action_listaCampeones_to_infoCampeon,bundleOf("campeon" to "malzahar"))
         }
 
         sion.setOnClickListener{
-            findNavController().navigate(R.id.action_listaCampeones_to_infoCampeon)
+            findNavController().navigate(R.id.action_listaCampeones_to_infoCampeon,bundleOf("campeon" to "sion" ))
         }
 
         akali.setOnClickListener{
-            findNavController().navigate(R.id.action_listaCampeones_to_infoCampeon)
+            findNavController().navigate(R.id.action_listaCampeones_to_infoCampeon,bundleOf("campeon" to "akali"))
         }
 
         zed.setOnClickListener{
-            findNavController().navigate(R.id.action_listaCampeones_to_infoCampeon)
+            findNavController().navigate(R.id.action_listaCampeones_to_infoCampeon,bundleOf("campeon" to "zed"))
         }
 
 
